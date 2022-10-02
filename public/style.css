@@ -118,8 +118,6 @@ input[name="player"]:checked ~ input[name="computer"] + label {
 input[name="computer"] + label {
     --speed: 1200ms;
     position: absolute;
-    scale: 0;
-    pointer-events: none;
     animation-name: reveal;
     animation-duration: var(--speed);
     animation-timing-function: linear;
@@ -141,14 +139,12 @@ label[for="c2"] {
 
 @keyframes reveal {
     0%,
-    33.333% {
-        scale: 1;
-        pointer-events: initial;
+    33.33% {
+        z-index: 1;
     }
-    33.334%,
+    33.34%,
     100% {
-        scale: 0;
-        pointer-events: none;
+        z-index: 0;
     }
 }
 
