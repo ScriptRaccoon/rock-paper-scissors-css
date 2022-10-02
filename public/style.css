@@ -11,6 +11,11 @@ body {
     font-size: 18px;
 }
 
+a {
+    color: inherit;
+    text-underline-offset: 2px;
+}
+
 /* main container */
 
 main {
