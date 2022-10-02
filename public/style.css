@@ -87,7 +87,6 @@ input[type="checkbox"] {
         height: 200px;
         bottom: calc(100% - 10px);
         z-index: 10;
-        background-color: #f00a;
     }
     @media (max-width: 315px) {
         #result:before {
