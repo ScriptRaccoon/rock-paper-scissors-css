@@ -76,15 +76,40 @@ input[type="checkbox"] {
     position: relative;
 }
 
-/* overlay prevents clicks above when results are shown */
+/* overlay of a fixed height above the results
+ prevents clicks when results are shown */
 
-#result:before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 200px;
-    bottom: calc(100% - 10px);
-    z-index: 10;
+@supports not (selector(:has(*))) {
+    #result:before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 200px;
+        bottom: calc(100% - 10px);
+        z-index: 10;
+        background-color: #f00a;
+    }
+    @media (max-width: 315px) {
+        #result:before {
+            height: 280px;
+        }
+    }
+}
+
+/* better solution instead of overlay
+at least when :has is supported */
+
+@supports (selector(:has(*))) {
+    main:has(input[name="computer"]:checked)
+        input[name="player"]
+        + label {
+        pointer-events: none;
+    }
+    main:has(input[name="computer"]:checked)
+        input[name="computer"]
+        + label {
+        pointer-events: none;
+    }
 }
 
 /* images */
