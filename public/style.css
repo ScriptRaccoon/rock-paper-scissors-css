@@ -1,0 +1,195 @@
+/* global styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+}
+
+/* main container */
+
+main {
+    padding: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* headings */
+
+h1 {
+    padding: 20px 0px;
+    font-size: 32px;
+    font-weight: 500;
+}
+
+h2 {
+    padding: 20px 0px 10px 0px;
+    font-size: 26px;
+    font-weight: 400;
+}
+
+/* button class */
+
+.btn {
+    font-family: inherit;
+    font-size: inherit;
+    outline: none;
+    border: none;
+    background-color: teal;
+    color: white;
+    padding: 5px 12px;
+    cursor: pointer;
+}
+
+/* things to hide first */
+
+#result,
+#result > div,
+#result > .choice {
+    display: none;
+}
+
+input[name="computer"] + label {
+    display: none;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+}
+
+/* result */
+
+#result {
+    margin-top: 30px;
+    position: relative;
+}
+
+/* prevents clicks above when results are shown */
+
+#result:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    bottom: calc(100% - 10px);
+    z-index: 10;
+}
+
+/* images */
+
+img {
+    height: 80px;
+    margin-right: 15px;
+}
+
+/* player labels */
+
+input[name="player"] + label {
+    display: inline-block;
+    cursor: pointer;
+    opacity: 0.25;
+    scale: 0.8;
+    transition: opacity 200ms ease-out, scale 200ms ease-out;
+}
+
+input[name="player"]:checked + label {
+    opacity: 1;
+    scale: 1;
+}
+
+input[name="player"]:checked ~ input[name="computer"] + label {
+    display: inline-block !important;
+}
+
+/* computer labels */
+
+input[name="computer"] + label {
+    --speed: 1200ms;
+    position: absolute;
+    scale: 0;
+    pointer-events: none;
+    animation-name: reveal;
+    animation-duration: var(--speed);
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    user-select: none;
+}
+
+label[for="c0"] {
+    animation-delay: 0;
+}
+
+label[for="c1"] {
+    animation-delay: calc(var(--speed) / 3);
+}
+
+label[for="c2"] {
+    animation-delay: calc(var(--speed) * 2 / 3);
+}
+
+@keyframes reveal {
+    0%,
+    33.333% {
+        scale: 1;
+        pointer-events: initial;
+    }
+    33.334%,
+    100% {
+        scale: 0;
+        pointer-events: none;
+    }
+}
+
+/* show results */
+
+input[name="player"]:checked
+    ~ input[name="computer"]:checked
+    ~ #result {
+    display: block;
+}
+
+#c0:checked ~ #result > #c_0 {
+    display: inline-block;
+}
+
+#c1:checked ~ #result > #c_1 {
+    display: inline-block;
+}
+
+#c2:checked ~ #result > #c_2 {
+    display: inline-block;
+}
+
+/* ties */
+
+:where(#p0:checked ~ #c0:checked, #p1:checked
+        ~ #c1:checked, #p2:checked ~ #c2:checked)
+    ~ #result
+    > #t {
+    display: block;
+}
+
+/* player wins */
+
+:where(#p0:checked ~ #c2:checked, #p1:checked
+        ~ #c0:checked, #p2:checked ~ #c1:checked)
+    ~ #result
+    > #p {
+    display: block;
+}
+
+/* computer wins */
+
+:where(#p0:checked ~ #c1:checked, #p1:checked
+        ~ #c2:checked, #p2:checked ~ #c0:checked)
+    ~ #result
+    > #c {
+    display: block;
+}

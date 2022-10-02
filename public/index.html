@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock, Paper, Scissors with CSS</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <main>
+        <form>
+            <h1>Rock, Paper, Scissors</h1>
+            <p>Believe it or not, but this game is written in HTML and CSS. No JavaScript is required!</p>
+
+            <h2>Choose your weapon</h2>
+            <input type="radio" id="p0" name="player" />
+            <label for="p0">
+                <img src="./assets/rock.svg" />
+            </label>
+            <input type="radio" id="p1" name="player" />
+            <label for="p1">
+                <img src="./assets/paper.svg" />
+            </label>
+            <input type="radio" id="p2" name="player" />
+            <label for="p2">
+                <img src="./assets/scissors.svg" />
+            </label>
+            <br>
+            <br>
+            <input type="radio" id="c0" name="computer" />
+            <label for="c0" class="btn">
+                Play
+            </label>
+            <input type="radio" id="c1" name="computer" />
+            <label for="c1" class="btn">
+                Play
+            </label>
+            <input type="radio" id="c2" name="computer" />
+            <label for="c2" class="btn">
+                Play
+            </label>
+            <section id="result">
+                <h2>Computer choice</h2>
+                <span id="c_0" class="choice">
+                    <img src="./assets/rock.svg">
+                </span>
+                <span id="c_1" class="choice">
+                    <img src="./assets/paper.svg">
+                </span>
+                <span id="c_2" class="choice">
+                    <img src="./assets/scissors.svg">
+                </span>
+                <h2>Result</h2>
+                <div id="c">Computer wins!</div>
+                <div id="p">Player wins!</div>
+                <div id="t">It's a tie!</div>
+                <br>
+                <button class="btn" type="reset" id="resetBtn">Reset</button>
+
+            </section>
+
+        </form>
+    </main>
+
+
+</body>
+
+</html>
